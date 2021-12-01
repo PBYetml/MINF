@@ -1,0 +1,61 @@
+ifblock BSP_PIC32MX_SKES
+
+menu "Select BSP Features"
+    depends on USE_BSP
+    depends on BSP_PIC32MX_SKES
+
+config BSP_CONFIGURE_PIC32MX_SKES
+    depends on USE_BSP
+    select BSP_TRIGGER
+    #select BSP_JTAG
+    select BSP_POSC_8MHz
+    set SYS_CLK_CONFIG_PRIMARY_XTAL to "8000000"
+    #set BSP_PIN_83_FUNCTION_NAME to "BSP_SWITCH_1"
+    #set BSP_PIN_83_FUNCTION_TYPE to "SWITCH"
+    #set BSP_PIN_84_FUNCTION_NAME to "BSP_SWITCH_2"
+    #set BSP_PIN_84_FUNCTION_TYPE to "SWITCH"
+    #set BSP_PIN_80_FUNCTION_NAME to "BSP_SWITCH_3"
+    #set BSP_PIN_80_FUNCTION_TYPE to "SWITCH"
+    #set BSP_PIN_72_FUNCTION_NAME to "BSP_LED_1"
+    #set BSP_PIN_72_FUNCTION_TYPE to "LED_AH"
+    #set BSP_PIN_76_FUNCTION_NAME to "BSP_LED_2"
+    #set BSP_PIN_76_FUNCTION_TYPE to "LED_AH"
+    #set BSP_PIN_77_FUNCTION_NAME to "BSP_LED_3"
+    #set BSP_PIN_77_FUNCTION_TYPE to "LED_AH"
+    #set BSP_PIN_20_FUNCTION_NAME to "USB_VBUS_SWITCH"
+    #set BSP_PIN_20_FUNCTION_TYPE to "VBUS"
+    bool
+    ---help---
+    IDH_HTML_BSP_pic32mx_skes
+    ---endhelp---
+
+endmenu
+
+menu "Custom Board Configurations for PIC32MX Starter Kit ETML-ES"
+    depends on USE_BSP
+
+import BSP_PIC32MX_SKES_IMPORT_ICB "Select Custom Configuration To Import"
+    default "../*/*.mhc"
+    ---help---
+    IDH_HTML_Board_Support_Package_Help
+    ---endhelp---
+
+#file BSP_pic32mx_skes_BSP "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/xml/bsp.xml" to "$BSP_CONFIGURATION_XML"
+file BSP_pic32mx_skes_bsp_H "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/bsp.h" to "$PROJECT_HEADER_FILES/bsp/pic32mx_skes/bsp.h"
+file BSP_pic32mx_skes_Mc32Delays_H "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32Delays.h" to "$PROJECT_HEADER_FILES/bsp/pic32mx_skes/Mc32Delays.h"
+file BSP_pic32mx_skes_Mc32DriverAdc_H "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32DriverAdc.h" to "$PROJECT_HEADER_FILES/bsp/pic32mx_skes/Mc32DriverAdc.h"
+file BSP_pic32mx_skes_Mc32DriverAdcAlt_H "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32DriverAdcAlt.h" to "$PROJECT_HEADER_FILES/bsp/pic32mx_skes/Mc32DriverAdcAlt.h"
+file BSP_pic32mx_skes_Mc32DriverLcd_H "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32DriverLcd.h" to "$PROJECT_HEADER_FILES/bsp/pic32mx_skes/Mc32DriverLcd.h"
+file BSP_pic32mx_skes_Mc32CoreTimer_H "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32CoreTimer.h" to "$PROJECT_HEADER_FILES/bsp/pic32mx_skes/Mc32CoreTimer.h"
+file BSP_pic32mx_skes_bsp_C "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/bsp.c" to "$PROJECT_SOURCE_FILES/bsp/pic32mx_skes/bsp.c"
+file BSP_pic32mx_skes_Mc32Delays_C "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32Delays.c" to "$PROJECT_SOURCE_FILES/bsp/pic32mx_skes/Mc32Delays.c"
+file BSP_pic32mx_skes_Mc32DriverAdc_C "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32DriverAdc.c" to "$PROJECT_SOURCE_FILES/bsp/pic32mx_skes/Mc32DriverAdc.c"
+file BSP_pic32mx_skes_Mc32DriverAdcAlt_C "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32DriverAdcAlt.c" to "$PROJECT_SOURCE_FILES/bsp/pic32mx_skes/Mc32DriverAdcAlt.c"
+file BSP_pic32mx_skes_Mc32DriverLcd_C "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32DriverLcd.c" to "$PROJECT_SOURCE_FILES/bsp/pic32mx_skes/Mc32DriverLcd.c"
+file BSP_pic32mx_skes_Mc32CoreTimer_C "$HARMONY_VERSION_PATH/bsp/pic32mx_skes/Mc32CoreTimer.c" to "$PROJECT_SOURCE_FILES/bsp/pic32mx_skes/Mc32CoreTimer.c"
+
+compiler BSP_COMPILER_INCLUDE_pic32mx_skes includepath "$HARMONY_VERSION_PATH/bsp/pic32mx_skes"
+
+endmenu
+
+endif
